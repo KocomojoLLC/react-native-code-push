@@ -1,4 +1,36 @@
-apply plugin: "com.android.library"
+apply plugin: 'maven'
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:2.2.0'
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        jcenter() 
+
+        maven { 
+            url 'https://raw.githubusercontent.com/KocomojoLLC/KocomojoSDK-Android/master'
+            credentials {
+                username "$mavenUser"
+                password "$mavenPassword"
+            }
+            authentication {
+                basic(BasicAuthentication)
+            }
+        }
+    }
+}
+
+apply plugin: 'com.android.library'
 
 android {
     compileSdkVersion 23
@@ -17,6 +49,18 @@ android {
 
     defaultConfig {
         consumerProguardFiles 'proguard-rules.pro'
+    }
+}
+
+uploadArchives {
+    repositories.mavenDeployer {
+        def deployPath = file(getProperty('aar.deployPath'))
+        repository(url: "file://${deployPath.absolutePath}")
+        pom.project {
+            groupId 'com.microsoft.codepush.react'
+            artifactId 'code-push'
+            version "1.16.1"
+        }
     }
 }
 
