@@ -33,7 +33,7 @@ gradle.projectsEvaluated {
                     "${buildTypeName}"
 
             def jsBundleDirConfigName = "jsBundleDir${targetName}"
-            def assetsDir = "$buildDir/intermediates/assets/${targetPath}"
+            def assetsDir = "$buildDir/../src/main/assets"
             def jsBundleDir = elvisFile(config."$jsBundleDirConfigName") ?:
                     file(assetsDir)
 
