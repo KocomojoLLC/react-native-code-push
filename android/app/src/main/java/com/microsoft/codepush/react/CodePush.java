@@ -95,6 +95,10 @@ public class CodePush implements ReactPackage {
         return mDidUpdate;
     }
 
+    public static void setAppVersion(String appVersion) {
+        sAppVersion = appVersion;
+    }
+
     public String getAppVersion() {
         return sAppVersion;
     }
