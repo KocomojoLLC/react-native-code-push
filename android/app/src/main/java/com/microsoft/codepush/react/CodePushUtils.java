@@ -200,7 +200,7 @@ public class CodePushUtils {
     }
 
     public static void log(String message) {
-        Log.d(CodePushConstants.REACT_NATIVE_LOG_TAG, "[CodePush] " + message);
+//        Log.d(CodePushConstants.REACT_NATIVE_LOG_TAG, "[CodePush] " + message);
     }
 
     public static void logBundleUrl(String path) {
